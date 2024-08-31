@@ -1,4 +1,4 @@
-// src/app/models/character.model.ts
+
 
 export interface Origin {
   name: string;
