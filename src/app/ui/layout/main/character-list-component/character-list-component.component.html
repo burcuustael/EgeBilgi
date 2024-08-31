@@ -1,13 +1,33 @@
 <div *ngIf="characters.length">
   <div class="character-grid">
     <div *ngFor="let character of characters" class="character-card">
-      <img [src]="character.image" alt="{{ character.name }}" />
+      <div>
+        <img [src]="character.image" alt="{{ character.name }}" />
+      </div>
+
       <div class="character-info">
         <h2>{{ character.name }}</h2>
-        <p>{{ character.status }} - {{ character.species }}</p>
-        <p>Last known location : {{ character.location.name }}</p>
-        <p>First seen in : {{ character.episode[0] }}</p>
+        <div class="status-container">
+          <span
+            class="status-icon"
+            [ngClass]="{
+              alive: character.status === 'Alive',
+              dead: character.status === 'Dead'
+            }"
+          ></span>
+        </div>
+        <div>{{ character.status }} - {{ character.species }}</div>
+        <div>Last known location : {{ character.location.name }}</div>
+        <div>First seen in : {{ character.firstEpisodeName }}</div>
       </div>
     </div>
   </div>
 </div>
+
+<button (click)="prevPage()" [disabled]="currentPage === 1">Önceki</button>
+<button
+  (click)="nextPage()"
+  [disabled]="currentPage * pageSize >= totalCharacters"
+>
+  Sonraki
+</button>

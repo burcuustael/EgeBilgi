@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CharacterService } from './services/character.service';
-import { Character } from './model/careacter.model';
+import { Character } from './model/character.model';
 import { CharacterListComponentComponent } from './character-list-component/character-list-component.component';
 
 @Component({

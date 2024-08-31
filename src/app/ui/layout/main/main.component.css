@@ -7,12 +7,14 @@ main {
 h1 {
   font-size: 3rem;
   text-align: center;
-  margin-bottom: 20px; /* Başlık ile bileşen arasında boşluk */
+  margin-bottom: 20px;
 }
 
 .character-list-container {
   display: flex;
-  justify-content: center; /* Bileşeni yatayda ortalar */
+  justify-content: center;
+  background-color:rgb(39, 43, 51);
+
 }
 
 app-character-list-component {

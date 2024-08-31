@@ -1,5 +1,3 @@
-
-
 export interface Origin {
   name: string;
   url: string;
@@ -8,6 +6,16 @@ export interface Origin {
 export interface Location {
   name: string;
   url: string;
+}
+
+export interface CharacterApiResponse {
+  info: {
+    count: number;
+    pages: number;
+    next: string | null;
+    prev: string | null;
+  };
+  results: Character[];
 }
 
 export class Character {
@@ -20,7 +28,7 @@ export class Character {
   origin: Origin;
   location: Location;
   image: string;
-  episode: string[];
+  firstEpisodeName: string;
   url: string;
   created: Date;
 
@@ -34,7 +42,7 @@ export class Character {
     this.origin = data.origin;
     this.location = data.location;
     this.image = data.image;
-    this.episode = data.episode;
+    this.firstEpisodeName = '';
     this.url = data.url;
     this.created = new Date(data.created);
   }

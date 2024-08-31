@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CharacterService } from '../services/character.service';
-import { Character } from '../model/careacter.model';
+import { Character } from '../model/character.model';
 import { forkJoin } from 'rxjs';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -15,16 +15,32 @@ import { CommonModule } from '@angular/common';
 })
 export class CharacterListComponentComponent implements OnInit {
   characters: Character[] = [];
+  currentPage = 1;
+  pageSize = 6;
+  totalCharacters = 0;
 
   constructor(private characterService: CharacterService) {}
 
   ngOnInit(): void {
-    this.getCharacters();
+    this.loadCharacters();
   }
 
-  getCharacters(): void {
-    const characterIds = [168, 256, 314, 644, 684, 787]; // İlk 6 karakterin ID'lerini buraya yazın
-    const requests = characterIds.map((id) =>
+  loadCharacters(): void {
+    this.characterService.getAllCharacters().subscribe((data) => {
+      this.totalCharacters = data.info.count;
+      this.fetchPage(this.currentPage);
+    });
+  }
+
+  fetchPage(page: number): void {
+    const startIndex = (page - 1) * this.pageSize;
+    const endIndex = Math.min(startIndex + this.pageSize, this.totalCharacters);
+
+    const randomIds = this.characterService.getRandomCharacterIds(
+      this.pageSize
+    );
+
+    const requests = randomIds.map((id) =>
       this.characterService.getCharacter(id)
     );
 
@@ -36,6 +52,18 @@ export class CharacterListComponentComponent implements OnInit {
         console.error('Hata oluştu:', error);
       }
     );
-    debugger;
+  }
+  nextPage(): void {
+    if (this.currentPage * this.pageSize < this.totalCharacters) {
+      this.currentPage++;
+      this.fetchPage(this.currentPage);
+    }
+  }
+
+  prevPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.fetchPage(this.currentPage);
+    }
   }
 }

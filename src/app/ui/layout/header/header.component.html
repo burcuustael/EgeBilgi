@@ -1,15 +1,21 @@
 <header>
   <nav>
     <ul class="nav-links">
-      <li class="logo" >
-        <img src="../../../assets/images/burcu.png" alt="">
+      <li class="logo">
+        <img src="../../../assets/images/burcu.png" alt="" />
       </li>
+      <div>
+        <input
+          type="text"
+          placeholder="Karakter adı ara..."
+          [(ngModel)]="searchTerm"
+          (keyup)="onSearch()"
+        />
+      </div>
+
       <li><a href="#">Docs</a></li>
       <li><a href="#">About</a></li>
       <li><a href="#" class="support-btn">Support Us</a></li>
     </ul>
   </nav>
 </header>
-<!-- <main>
-  <h1>The Rick and Morty API</h1>
-</main> -->

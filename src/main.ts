@@ -20,6 +20,13 @@ bootstrapApplication(AppComponent, {
               (c) => c.LayoutComponent
             ),
         },
+        {
+          path: 'search-results',
+          loadComponent: () =>
+            import(
+              './app/ui/layout/main/search-results/search-results.component'
+            ).then((c) => c.SearchResultsComponent),
+        },
       ])
     ),
     provideAnimationsAsync(),
