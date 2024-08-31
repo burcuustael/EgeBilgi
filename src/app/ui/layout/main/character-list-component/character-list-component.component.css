@@ -1,0 +1,18 @@
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Üç sütunlu bir grid oluşturur */
+  gap: 20px; /* Kartlar arasındaki boşluk */
+}
+
+.character-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.character-card img {
+  max-width: 100%;
+  height: auto;
+}

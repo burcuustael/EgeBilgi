@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+header {
+  background-color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between; /* Logo ve nav öğelerini yatayda dağıtmak için */
+  align-items: center; /* Tüm öğeleri dikeyde ortalayın */
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  width: 100%; /* Tüm genişliği kullan */
+}
+
+.nav-links li {
+  margin-left: 15px; /* Liste öğeleri arasına boşluk ekleyin, önceki değeri azaltarak boşlukları daralt */
+}
+
+.nav-links li:not(.logo) {
+  margin-left: auto; /* Logo dışındaki öğeleri sağa itmek için */
+}
+
+.nav-links li + li {
+  margin-left: 15px; /* Logo dışındaki öğeler arasındaki boşluğu azalt */
+}
+
+.logo {
+  margin-right: auto; /* Logoyu en sola yerleştirin */
+}
+
+.logo img {
+  width: auto; /* Logonun genişliğini ayarlayın */
+  height: auto; /* Yüksekliği orana göre otomatik ayarlayın */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.support-btn {
+  background-color: #fff;
+  border: 2px solid #ffc107;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #ffc107;
+  font-weight: bold;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background-size: contain;
+}
+
+h1 {
+  font-size: 3rem;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}

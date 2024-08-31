@@ -16,18 +16,9 @@ bootstrapApplication(AppComponent, {
         {
           path: '',
           loadComponent: () =>
-            import('./app/ui/layout/header/header.component').then(
-              (c) => c.HeaderComponent
+            import('./app/ui/layout/layout.component').then(
+              (c) => c.LayoutComponent
             ),
-          children: [
-            {
-              path: 'footer',
-              loadComponent: () =>
-                import('./app/ui/layout/footer/footer.component').then(
-                  (c) => c.FooterComponent
-                ),
-            },
-          ],
         },
       ])
     ),
