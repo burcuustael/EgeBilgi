@@ -1,6 +1,9 @@
+<div class="search">
+  <input [(ngModel)]="search" (ngModelChange)="onSearchChange()" type="search" class="form-control" placeholder="Aranacak değer girin..." />
+</div>
 <div *ngIf="characters.length">
   <div class="character-grid">
-    <div *ngFor="let character of characters" class="character-card">
+    <div *ngFor="let character of characters | character:search" class="character-card">
       <div>
         <img [src]="character.image" alt="{{ character.name }}" />
       </div>

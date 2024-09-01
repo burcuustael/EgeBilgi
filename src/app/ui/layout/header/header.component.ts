@@ -15,9 +15,10 @@ export class HeaderComponent {
   constructor(private router: Router) {}
 
   onSearch(): void {
-    if (this.searchTerm.trim(){
-      this.router.navigate(['/search-results'], { queryParams: { q: this.searchTerm } });
-    } 
-  
+    if (this.searchTerm.trim()) {
+      this.router.navigate(['/search-results'], {
+        queryParams: { q: this.searchTerm },
+      });
+    }
   }
 }

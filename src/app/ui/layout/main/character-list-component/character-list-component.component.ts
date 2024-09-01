@@ -5,15 +5,19 @@ import { forkJoin } from 'rxjs';
 
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { CharacterPipe } from '../../../pipes/chracter.pipe';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-character-list-component',
   standalone: true,
-  imports: [HttpClientModule, CommonModule],
+  imports: [HttpClientModule, CommonModule, CharacterPipe, FormsModule],
   templateUrl: './character-list-component.component.html',
   styleUrl: './character-list-component.component.css',
 })
 export class CharacterListComponentComponent implements OnInit {
+  search: string = '';
+  filteredCharacters: Character[] = [];
   characters: Character[] = [];
   currentPage = 1;
   pageSize = 6;
@@ -29,6 +33,7 @@ export class CharacterListComponentComponent implements OnInit {
     this.characterService.getAllCharacters().subscribe((data) => {
       this.totalCharacters = data.info.count;
       this.fetchPage(this.currentPage);
+      this.filteredCharacters = this.characters;
     });
   }
 
@@ -65,5 +70,10 @@ export class CharacterListComponentComponent implements OnInit {
       this.currentPage--;
       this.fetchPage(this.currentPage);
     }
+  }
+  onSearchChange() {
+    this.filteredCharacters = this.characters.filter((character) =>
+      character.name.toLowerCase().includes(this.search.toLowerCase())
+    );
   }
 }
