@@ -1,6 +1,6 @@
 .character-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 30px;
   justify-content: center;
   padding: 20px;
@@ -10,26 +10,28 @@
   background-color: #3b3e43;
   color: #ffffff;
   border-radius: 8px;
-  width: 500px;
+  width: 600px;
+  height: 250px;
+  max-width: 600px;
   display: flex;
-  align-items: center;
-  padding-right: 20px;
-  margin-right: 30px;
+  align-items: stretch;
+  padding: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
 .character-card img {
-  width: 200px;
-  height: 250px;
-  border-radius: 8px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
 }
 
 .character-info {
+  padding: 20px;
+  width: 70%; /* Kartın %70'ini kaplaması için */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 10px;
-  margin-left: 20px;
 }
 
 .status-container {
@@ -45,6 +47,7 @@
 .character-info p {
   margin: 5px 0;
   font-size: 14px;
+  color: #6c757d;
 }
 
 .status-icon {
@@ -61,4 +64,48 @@
 
 .status-icon.dead {
   background-color: red;
+}
+
+.status-icon.unkown {
+  background-color: gray;
+}
+
+.search {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 0;
+}
+
+.search input {
+  width: 300px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: yellowgreen;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: yellowgreen;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
 }

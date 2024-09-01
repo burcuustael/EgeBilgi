@@ -13,8 +13,8 @@ header {
 
 nav {
   display: flex;
-  justify-content: space-between; /* Logo ve nav öğelerini yatayda dağıtmak için */
-  align-items: center; /* Tüm öğeleri dikeyde ortalayın */
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-links {
@@ -23,28 +23,28 @@ nav {
   padding: 0;
   display: flex;
   align-items: center;
-  width: 100%; /* Tüm genişliği kullan */
+  width: 100%;
 }
 
 .nav-links li {
-  margin-left: 15px; /* Liste öğeleri arasına boşluk ekleyin, önceki değeri azaltarak boşlukları daralt */
+  margin-left: 15px;
 }
 
 .nav-links li:not(.logo) {
-  margin-left: auto; /* Logo dışındaki öğeleri sağa itmek için */
+  margin-left: auto;
 }
 
 .nav-links li + li {
-  margin-left: 15px; /* Logo dışındaki öğeler arasındaki boşluğu azalt */
+  margin-left: 15px;
 }
 
 .logo {
-  margin-right: auto; /* Logoyu en sola yerleştirin */
+  margin-right: auto;
 }
 
 .logo img {
-  width: auto; /* Logonun genişliğini ayarlayın */
-  height: auto; /* Yüksekliği orana göre otomatik ayarlayın */
+  width: auto;
+  height: auto;
 }
 
 .nav-links a {

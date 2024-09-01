@@ -1,36 +1,54 @@
-<div class="search">
-  <input [(ngModel)]="search" (ngModelChange)="onSearchChange()" type="search" class="form-control" placeholder="Aranacak değer girin..." />
-</div>
-<div *ngIf="characters.length">
-  <div class="character-grid">
-    <div *ngFor="let character of characters | character:search" class="character-card">
-      <div>
-        <img [src]="character.image" alt="{{ character.name }}" />
-      </div>
+<div>
+  <div class="search">
+    <input
+      [(ngModel)]="search"
+      (ngModelChange)="onSearchChange()"
+      type="search"
+      class="form-control"
+      placeholder="Search..."
+    />
+  </div>
 
-      <div class="character-info">
-        <h2>{{ character.name }}</h2>
-        <div class="status-container">
-          <span
-            class="status-icon"
-            [ngClass]="{
-              alive: character.status === 'Alive',
-              dead: character.status === 'Dead'
-            }"
-          ></span>
+  <div *ngIf="characters.length">
+    <div class="character-grid">
+      <div
+        *ngFor="let character of characters | character : search"
+        class="character-card"
+      >
+        <div>
+          <img [src]="character.image" alt="{{ character.name }}" />
         </div>
-        <div>{{ character.status }} - {{ character.species }}</div>
-        <div>Last known location : {{ character.location.name }}</div>
-        <div>First seen in : {{ character.firstEpisodeName }}</div>
+
+        <div class="character-info">
+          <h2>{{ character.name }}</h2>
+          <div class="status-container">
+            <div
+              class="status-icon"
+              [ngClass]="{
+                alive: character.status === 'Alive',
+                dead: character.status === 'Dead',
+                unkown: character.status === 'unknown'
+              }"
+            ></div>
+            <div>{{ character.status }} - {{ character.species }}</div>
+          </div>
+
+          <p>Last known location :</p>
+          <div>{{ character.location.name }}</div>
+          <p>First seen in :</p>
+          <div>{{ character.firstEpisodeName }}</div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<button (click)="prevPage()" [disabled]="currentPage === 1">Önceki</button>
-<button
-  (click)="nextPage()"
-  [disabled]="currentPage * pageSize >= totalCharacters"
->
-  Sonraki
-</button>
+  <div class="button-container">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Önceki</button>
+    <button
+      (click)="nextPage()"
+      [disabled]="currentPage * pageSize >= totalCharacters"
+    >
+      Sonraki
+    </button>
+  </div>
+</div>

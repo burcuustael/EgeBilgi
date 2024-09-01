@@ -1,23 +1,25 @@
-
 main {
   padding: 20px;
   background-color: #f0f0f0;
+  height: 40vh;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 5.6rem;
   text-align: center;
-  margin-bottom: 20px;
+  margin: 20px;
+  font-weight: bold;
+  color: #333;
+  justify-content: center;
 }
 
 .character-list-container {
   display: flex;
   justify-content: center;
-  background-color:rgb(39, 43, 51);
-
+  background-color: rgb(39, 43, 51);
 }
 
 app-character-list-component {
- width: 100%;
- max-width: 800px;
+  width: 100%;
+  max-width: 800px;
 }
