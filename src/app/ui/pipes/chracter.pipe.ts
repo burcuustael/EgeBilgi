@@ -11,12 +11,12 @@ export class CharacterPipe implements PipeTransform {
       return value;
     }
 
+    const lowerCaseSearch = search.toLocaleLowerCase();
+
     return value.filter(
       (p) =>
-        p.name.toString().includes(search) ||
-        p.firstEpisodeName
-          .toLocaleLowerCase()
-          .includes(search.toLocaleLowerCase())
+        p.name.toLowerCase().includes(lowerCaseSearch) ||
+        p.firstEpisodeName.toLocaleLowerCase().includes(lowerCaseSearch)
     );
   }
 }

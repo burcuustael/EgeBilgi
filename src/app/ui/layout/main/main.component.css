@@ -18,8 +18,3 @@ h1 {
   justify-content: center;
   background-color: rgb(39, 43, 51);
 }
-
-app-character-list-component {
-  width: 100%;
-  max-width: 800px;
-}

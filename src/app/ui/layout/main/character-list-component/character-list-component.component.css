@@ -28,7 +28,7 @@
 
 .character-info {
   padding: 20px;
-  width: 70%; /* Kartın %70'ini kaplaması için */
+  width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: center;
