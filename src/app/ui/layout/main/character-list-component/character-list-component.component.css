@@ -83,29 +83,51 @@
   border: 1px solid #ccc;
 }
 
-button {
-  display: inline-block;
-  padding: 10px 20px;
-  margin: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: yellowgreen;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:disabled {
-  background-color: #6c757d;
-  cursor: not-allowed;
-}
-
-button:hover:not(:disabled) {
-  background-color: yellowgreen;
-}
-
-.button-container {
+.pagination-controls {
   display: flex;
   justify-content: center;
-  margin: 20px;
+  margin-top: 20px;
+}
+
+.ngx-pagination {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 8px;
+}
+
+.ngx-pagination li {
+  display: inline-block;
+}
+
+.ngx-pagination a {
+  padding: 8px 12px;
+  margin: 0 4px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #ddd;
+  transition: background-color 0.3s;
+}
+
+/* Hover effect for page numbers */
+.ngx-pagination a:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Aktif sayfa numarası */
+.ngx-pagination .current a {
+  background-color: yellowgreen;
+  color: white;
+  border-color: yellowgreen;
+}
+
+/* Disabled state for previous/next buttons */
+.ngx-pagination .disabled a {
+  background-color: #e9ecef;
+  color: #6c757d;
+  cursor: not-allowed;
 }

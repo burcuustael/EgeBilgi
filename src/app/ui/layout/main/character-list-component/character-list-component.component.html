@@ -2,7 +2,6 @@
   <div class="search">
     <input
       [(ngModel)]="search"
-      (ngModelChange)="onSearchChange()"
       type="search"
       class="form-control"
       placeholder="Search..."
@@ -12,7 +11,15 @@
   <div *ngIf="characters.length">
     <div class="character-grid">
       <div
-        *ngFor="let character of characters | character : search"
+        *ngFor="
+          let character of filteredCharacters
+            | paginate
+              : {
+                  id: 'characterPagination',
+                  itemsPerPage: pageSize,
+                  currentPage: currentPage
+                }
+        "
         class="character-card"
       >
         <div>
@@ -42,13 +49,12 @@
     </div>
   </div>
 
-  <div class="button-container">
-    <button (click)="prevPage()" [disabled]="currentPage === 1">Önceki</button>
-    <button
-      (click)="nextPage()"
-      [disabled]="currentPage * pageSize >= totalCharacters"
-    >
-      Sonraki
-    </button>
-  </div>
+  <pagination-controls
+    (pageChange)="pageChanged($event)"
+    id="characterPagination"
+    [maxSize]="5"
+    [directionLinks]="true"
+    [autoHide]="false"
+    [responsive]="true"
+  ></pagination-controls>
 </div>
