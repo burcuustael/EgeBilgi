@@ -1,0 +1,29 @@
+<div *ngIf="character">
+  <div class="character-grid">
+    <div class="character-card">
+      <div>
+        <img [src]="character.image" alt="{{ character.name }}" />
+      </div>
+
+      <div class="character-info">
+        <h1>{{ character.name }}</h1>
+        <div class="status-container">
+          <div
+            class="status-icon"
+            [ngClass]="{
+              alive: character.status === 'Alive',
+              dead: character.status === 'Dead',
+              unkown: character.status === 'unknown'
+            }"
+          ></div>
+          <div>{{ character.status }} - {{ character.species }}</div>
+        </div>
+
+        <p>Last known location :</p>
+        <div>{{ character.location.name }}</div>
+        <p>First seen in :</p>
+        <div>{{ character.firstEpisodeName }}</div>
+      </div>
+    </div>
+  </div>
+</div>

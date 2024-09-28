@@ -20,6 +20,13 @@ bootstrapApplication(AppComponent, {
               (c) => c.LayoutComponent
             ),
         },
+        {
+          path: 'character/:id',
+          loadComponent: () =>
+            import(
+              './app/ui/layout/main/character-detail/character-detail.component'
+            ).then((c) => c.CharacterDetailComponent),
+        },
       ])
     ),
     provideAnimationsAsync(),

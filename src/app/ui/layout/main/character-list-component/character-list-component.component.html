@@ -2,10 +2,15 @@
   <div class="search">
     <input
       [(ngModel)]="search"
+      (ngModelChange)="onSearchChange()"
       type="search"
       class="form-control"
       placeholder="Search..."
     />
+  </div>
+
+  <div *ngIf="suggestionMessage">
+    <p>{{ suggestionMessage }}</p>
   </div>
 
   <div *ngIf="characters.length">
@@ -27,7 +32,9 @@
         </div>
 
         <div class="character-info">
-          <h2>{{ character.name }}</h2>
+          <a [routerLink]="['/character', character.id]">{{
+            character.name
+          }}</a>
           <div class="status-container">
             <div
               class="status-icon"
@@ -49,12 +56,14 @@
     </div>
   </div>
 
-  <pagination-controls
-    (pageChange)="pageChanged($event)"
-    id="characterPagination"
-    [maxSize]="5"
-    [directionLinks]="true"
-    [autoHide]="false"
-    [responsive]="true"
-  ></pagination-controls>
+  <div class="pagecont">
+    <pagination-controls
+      (pageChange)="pageChanged($event)"
+      id="characterPagination"
+      [maxSize]="5"
+      [directionLinks]="true"
+      [autoHide]="false"
+      [responsive]="true"
+    ></pagination-controls>
+  </div>
 </div>

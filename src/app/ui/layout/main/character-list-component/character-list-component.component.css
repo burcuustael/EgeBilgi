@@ -40,8 +40,12 @@
   margin-bottom: 10px;
 }
 
-.character-info h2 {
+.character-info a {
   margin-bottom: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 32px;
+  font-weight: bold;
 }
 
 .character-info p {
@@ -83,51 +87,44 @@
   border: 1px solid #ccc;
 }
 
-.pagination-controls {
+.pagecont {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 20px;
 }
 
-.ngx-pagination {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 8px;
-}
-
-.ngx-pagination li {
+:host ::ng-deep .ngx-pagination li {
   display: inline-block;
 }
 
-.ngx-pagination a {
+:host ::ng-deep .ngx-pagination a {
   padding: 8px 12px;
   margin: 0 4px;
   background-color: #f0f0f0;
-  border-radius: 4px;
+  border-radius: 25px;
   text-decoration: none;
   color: #333;
   border: 1px solid #ddd;
   transition: background-color 0.3s;
 }
 
-/* Hover effect for page numbers */
-.ngx-pagination a:hover {
-  background-color: #007bff;
+:host ::ng-deep .ngx-pagination a:hover {
+  background-color: rgb(0, 153, 255);
   color: white;
+  border-radius: 25px;
 }
 
-/* Aktif sayfa numarası */
-.ngx-pagination .current a {
+:host ::ng-deep .ngx-pagination .current a {
   background-color: yellowgreen;
   color: white;
   border-color: yellowgreen;
+  border-radius: 25px;
 }
 
-/* Disabled state for previous/next buttons */
-.ngx-pagination .disabled a {
+:host ::ng-deep .ngx-pagination .disabled a {
   background-color: #e9ecef;
   color: #6c757d;
   cursor: not-allowed;
+  border-radius: 25px;
 }
