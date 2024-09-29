@@ -9,11 +9,11 @@
     />
   </div>
 
-  <div *ngIf="suggestionMessage">
+  <div *ngIf="suggestionMessage" class="suggestion">
     <p>{{ suggestionMessage }}</p>
   </div>
 
-  <div *ngIf="characters.length">
+  <div *ngIf="characters.length && !suggestionMessage">
     <div class="character-grid">
       <div
         *ngFor="
@@ -50,20 +50,20 @@
           <p>Last known location :</p>
           <div>{{ character.location.name }}</div>
           <p>First seen in :</p>
-          <div>{{ character.firstEpisodeName }}</div>
+          <div>{{ character.episode }}</div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="pagecont">
-    <pagination-controls
-      (pageChange)="pageChanged($event)"
-      id="characterPagination"
-      [maxSize]="5"
-      [directionLinks]="true"
-      [autoHide]="false"
-      [responsive]="true"
-    ></pagination-controls>
+    <div class="pagecont">
+      <pagination-controls
+        (pageChange)="pageChanged($event)"
+        id="characterPagination"
+        [maxSize]="5"
+        [directionLinks]="true"
+        [autoHide]="false"
+        [responsive]="true"
+      ></pagination-controls>
+    </div>
   </div>
 </div>

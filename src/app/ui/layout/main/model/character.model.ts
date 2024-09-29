@@ -28,7 +28,7 @@ export class Character {
   origin: Origin;
   location: Location;
   image: string;
-  firstEpisodeName: string;
+  episode: string;
   url: string;
   created: Date;
 
@@ -42,7 +42,7 @@ export class Character {
     this.origin = data.origin;
     this.location = data.location;
     this.image = data.image;
-    this.firstEpisodeName = '';
+    this.episode = '';
     this.url = data.url;
     this.created = new Date(data.created);
   }

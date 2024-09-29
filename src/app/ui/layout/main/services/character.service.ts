@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map, switchMap } from 'rxjs';
+import { Observable, map, switchMap, forkJoin, of } from 'rxjs';
 import { Character, CharacterApiResponse } from '../model/character.model';
 
 @Injectable({
@@ -14,22 +14,36 @@ export class CharacterService {
 
   getAllCharacters(): Observable<CharacterApiResponse> {
     return this.http.get<CharacterApiResponse>(this.apiUrl).pipe(
-      map((data) => {
-        this.allCharacters = data.results.map(
-          (result) => new Character(result)
+      switchMap((data) => {
+        const characterObservables = data.results.map((result) => {
+          const character = new Character(result);
+
+          const firstEpisodeUrl = result.episode?.[0];
+
+          if (firstEpisodeUrl) {
+            return this.http.get<any>(firstEpisodeUrl).pipe(
+              map((episode) => {
+                character.episode = episode.name;
+                return character;
+              })
+            );
+          } else {
+            character.episode = 'Unknown';
+            return of(character);
+          }
+        });
+
+        return forkJoin(characterObservables).pipe(
+          map((characters: Character[]) => {
+            this.allCharacters = characters;
+            return {
+              info: data.info,
+              results: characters,
+            };
+          })
         );
-        return data;
       })
     );
-  }
-
-  getRandomCharacterIds(count: number): number[] {
-    if (this.allCharacters.length === 0) {
-      throw new Error('Karakterler henüz yüklenmedi');
-    }
-
-    const shuffled = [...this.allCharacters].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, count).map((character: any) => character.id);
   }
 
   getCharacter(id: number): Observable<Character> {
@@ -41,7 +55,7 @@ export class CharacterService {
 
         return this.http.get<any>(firstEpisodeUrl).pipe(
           map((episode) => {
-            character.firstEpisodeName = episode.name;
+            character.episode = episode.name;
             return character;
           })
         );

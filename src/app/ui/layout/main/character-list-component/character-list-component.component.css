@@ -86,7 +86,17 @@
   border-radius: 5px;
   border: 1px solid #ccc;
 }
-
+.suggestion {
+  background-color: #c02828;
+  border-radius: 10px;
+  border: 1px solid #c02828;
+  color: #ccc;
+  display: flex;
+  margin: 20px;
+  width: 400px;
+  justify-content: center;
+  padding: 20px;
+}
 .pagecont {
   display: flex;
   justify-content: center;
